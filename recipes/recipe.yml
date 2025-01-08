@@ -77,5 +77,10 @@ modules:
       google-fonts:
         - Open Sans
 
+  - type: script # install Nix package manager
+    snippets:
+      - "curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install --determinate --no-confirm"
+      - "sed -i -r -e '/^\\s*Defaults\\s+secure_path/ s[=(.*)[=\\1:/nix/var/nix/profiles/default/bin[' /etc/sudoers" 
+
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
 
