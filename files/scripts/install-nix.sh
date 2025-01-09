@@ -2,5 +2,5 @@
 
 set -oue pipefail
 
-curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install --determinate --no-confirm
+curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install linux --explain --determinate --no-start-daemon --no-confirm
 sed -i -r -e '/^\s*Defaults\s+secure_path/ s[=(.*)[=\1:/nix/var/nix/profiles/default/bin[' /etc/sudoers
