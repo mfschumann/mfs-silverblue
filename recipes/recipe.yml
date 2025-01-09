@@ -78,10 +78,8 @@ modules:
       google-fonts:
         - Open Sans
 
-  - type: script
-    scripts:
-      - install-nix.sh # install Nix package manager
-
+  - type: justfiles
+    validate: true
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
 
