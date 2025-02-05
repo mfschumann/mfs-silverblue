@@ -24,7 +24,7 @@ modules:
 
   - type: copy
     from: ghcr.io/rustic-rs/rustic:latest
-    src: /usr/bin/rustic
+    src: /rustic
     dest: /usr/bin/
 
   - type: rpm-ostree
