@@ -16,6 +16,11 @@ modules:
     files:
       - source: system
         destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
+  
+  - type: copy
+    from: docker.io/creativeprojects/resticprofile:latest
+    src: /usr/bin/resticprofile
+    dest: /usr/bin/
 
   - type: rpm-ostree
     repos:
@@ -43,6 +48,11 @@ modules:
       - yq
       - fd-find
       - gcc
+      - zoxide
+      - ripgrep
+      - eza
+      - wireshark
+      - topgrade
     remove:
       - firefox
       - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
