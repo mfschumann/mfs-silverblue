@@ -55,7 +55,6 @@ modules:
       - gcc
       - zoxide
       - ripgrep
-      - eza
       - wireshark
       - flatpak-builder
     remove:
