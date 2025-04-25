@@ -58,6 +58,7 @@ modules:
       - eza
       - wireshark
       - flatpak-builder
+      - adwaita-fonts-all
     remove:
       - firefox
       - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
