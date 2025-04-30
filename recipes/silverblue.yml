@@ -27,6 +27,10 @@ modules:
     src: /rustic
     dest: /usr/bin/
 
+  - type: bling
+    install:
+      - 1password
+
   - type: rpm-ostree
     repos:
       - https://copr.fedorainfracloud.org/coprs/atim/starship/repo/fedora-%OS_VERSION%/atim-starship-fedora-%OS_VERSION%.repo
