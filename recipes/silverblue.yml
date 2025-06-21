@@ -64,6 +64,9 @@ modules:
       - flatpak-builder
       - adwaita-fonts-all
       - virt-viewer
+      - hcloud
+      - gitui
+      - gh
     remove:
       - firefox
       - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
