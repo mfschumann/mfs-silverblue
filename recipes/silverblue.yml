@@ -62,8 +62,11 @@ modules:
       - ripgrep
       - wireshark
       - flatpak-builder
-      - virt-viewer
       - tealdeer
+      - virt-viewer
+      - hcloud
+      - gitui
+      - gh
     remove:
       - firefox
       - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
