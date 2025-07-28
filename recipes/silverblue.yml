@@ -91,11 +91,11 @@ modules:
           - io.github.flattool.Warehouse
           - org.gnome.Boxes
           - org.libreoffice.LibreOffice
-        - scope: user
-          repo:
-            url: https://flathub.org/beta-repo/flathub-beta.flatpakrepo
-            name: flathub-beta
-            title: Flathub Beta
+      - scope: user
+        repo:
+          url: https://flathub.org/beta-repo/flathub-beta.flatpakrepo
+          name: flathub-beta
+          title: Flathub Beta
 
   - type: fonts
     fonts:
