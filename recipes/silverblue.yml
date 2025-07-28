@@ -73,27 +73,29 @@ modules:
       - toolbox
 
   - type: default-flatpaks
-    notify: true # Send notification after install/uninstall is finished (true/false)
-    system:
-      # If no repo information is specified, Flathub will be used by default
-      install:
-        - org.mozilla.firefox
-        - com.google.Chrome
-        - io.missioncenter.MissionCenter
-        - org.gnome.Loupe
-        - org.gnome.Showtime
-        - org.gimp.GIMP
-        - org.inkscape.Inkscape
-        - org.gnome.TextEditor
-        - org.gnome.Calculator
-        - org.gnome.Evince
-        - com.mattjakeman.ExtensionManager
-        - io.github.flattool.Warehouse
-        - org.gnome.Boxes
-        - org.libreoffice.LibreOffice
-      remove:
-        - org.gnome.eog
-    user: {} # Also add Flathub user repo, but no user packages
+    configurations:
+      - scope: system
+        notify: true # Send notification after install/uninstall is finished (true/false)
+        install:
+          - org.mozilla.firefox
+          - com.google.Chrome
+          - io.missioncenter.MissionCenter
+          - org.gnome.Loupe
+          - org.gnome.Showtime
+          - org.gimp.GIMP
+          - org.inkscape.Inkscape
+          - org.gnome.TextEditor
+          - org.gnome.Calculator
+          - org.gnome.Evince
+          - com.mattjakeman.ExtensionManager
+          - io.github.flattool.Warehouse
+          - org.gnome.Boxes
+          - org.libreoffice.LibreOffice
+        - scope: user
+          repo:
+            url: https://flathub.org/beta-repo/flathub-beta.flatpakrepo
+            name: flathub-beta
+            title: Flathub Beta
 
   - type: fonts
     fonts:
