@@ -96,6 +96,7 @@ modules:
           - org.gnome.Boxes
           - org.libreoffice.LibreOffice
       - scope: user
+        notify: false
         repo:
           url: https://flathub.org/beta-repo/flathub-beta.flatpakrepo
           name: flathub-beta
