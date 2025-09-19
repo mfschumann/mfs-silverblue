@@ -70,6 +70,7 @@ modules:
         - hcloud
         - gitui
         - gh
+        - chezmoi
     remove:
       packages:
         - firefox
