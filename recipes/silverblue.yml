@@ -9,9 +9,30 @@ description: This is my personal OS image.
 base-image: ghcr.io/ublue-os/silverblue-main
 image-version: 42 # latest is also supported if you want new updates ASAP
 
+stages:
+  - name: jj
+    from: docker.io/library/rust
+    modules:
+      - type: script
+        snippets:
+          - apt-get update 
+          - cargo install --locked --bin jj jj-cli
+          - mkdir -p /out/ && mv $CARGO_HOME/bin/jj /out/jj
+          - /out/jj util completion fish > /out/jj.fish
+
 # module configuration, executed in order
 # you can include multiple instances of the same module
 modules:
+  - type: copy
+    from: jj
+    src: /out/jj
+    dest: /usr/bin/
+
+  - type: copy
+    from: jj
+    src: /out/jj.fish
+    dest: /usr/share/fish/completions/
+
   - type: files
     files:
       - source: system
