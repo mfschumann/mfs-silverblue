@@ -62,10 +62,6 @@ modules:
       packages:
         - micro
         - starship
-        - gnome-shell-extension-appindicator
-        - gnome-shell-extension-gsconnect
-        - gnome-tweaks
-        - baobab
         - fish
         - podman-compose
         - setroubleshoot-server
