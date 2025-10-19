@@ -89,6 +89,7 @@ modules:
         - gh
         - chezmoi
         - p7zip
+        - kontact
     remove:
       packages:
         - firefox
@@ -102,7 +103,6 @@ modules:
         install:
           - org.mozilla.firefox
           - com.google.Chrome
-          - io.missioncenter.MissionCenter
           - org.gimp.GIMP
           - org.inkscape.Inkscape
           - org.libreoffice.LibreOffice
