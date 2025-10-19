@@ -89,7 +89,7 @@ modules:
         - gh
         - chezmoi
         - p7zip
-        - kontact
+        - korganizer
     remove:
       packages:
         - firefox
