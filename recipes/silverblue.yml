@@ -62,8 +62,6 @@ modules:
       packages:
         - micro
         - starship
-        - gnome-shell-extension-appindicator
-        - gnome-shell-extension-gsconnect
         - gnome-tweaks
         - baobab
         - fish
@@ -135,6 +133,16 @@ modules:
 
   - type: justfiles
     validate: true
+    
+  - type: gnome-extensions
+    install:
+      - AppIndicator and KStatusNotifierItem Support
+      - GSConnect
+      - Clipboard History
+      - Bilingual App Search
+      - Dash to Panel
+      - Just Perfection
+      - Night Theme Switcher
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
 
