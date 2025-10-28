@@ -62,6 +62,7 @@ modules:
       packages:
         - micro
         - starship
+        - gnome-shell-extension-gsconnect
         - gnome-tweaks
         - baobab
         - fish
@@ -137,7 +138,6 @@ modules:
   - type: gnome-extensions
     install:
       - AppIndicator and KStatusNotifierItem Support
-      - GSConnect
       - Clipboard History
       - Bilingual App Search
       - Dash to Panel
