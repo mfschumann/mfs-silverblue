@@ -17,27 +17,33 @@ modules:
       - source: system
         destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
 
-  - type: rpm-ostree
+  - type: dnf
     repos:
-      - influxdata.repo
+      files:
+        - influxdata.repo
     install:
-      - fish
-      - setroubleshoot-server
-      - bindfs
-      - et
-      - ncdu
-      - rclone
-      - restic
-      - yq
-      - fd-find
-      - chezmoi
-      - cockpit-storaged
-      - cockpit-ostree
-      - fzf
-      - mtr
-      - tuned
-      - unzip
-      - telegraf     
+      packages:
+        - fish
+        - setroubleshoot-server
+        - bindfs
+        - et
+        - ncdu
+        - rclone
+        - restic
+        - yq
+        - fd-find
+        - chezmoi
+        - cockpit-storaged
+        - cockpit-ostree
+        - fzf
+        - mtr
+        - tuned
+        - unzip
+        - telegraf     
+    remove:
+      packages:
+        - toolbox
+
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
 
