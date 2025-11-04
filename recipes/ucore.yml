@@ -20,8 +20,6 @@ modules:
   - type: rpm-ostree
     repos:
       - influxdata.repo
-    keys:
-      - https://repos.influxdata.com/influxdata-archive.key
     install:
       - fish
       - setroubleshoot-server
