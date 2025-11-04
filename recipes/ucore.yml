@@ -19,7 +19,7 @@ modules:
 
   - type: rpm-ostree
     repos:
-      - https://repos.influxdata.com/stable/x86_64/main
+      - https://raw.githubusercontent.com/mfschumann/mfs-silverblue/refs/heads/main/files/repos/influxdata.repo
     keys:
       - https://repos.influxdata.com/influxdata-archive.key
     install:
