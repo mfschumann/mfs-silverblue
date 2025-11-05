@@ -15,7 +15,7 @@ stages:
     modules:
       - type: script
         snippets:
-          - apt-get update 
+          - apt-get update
           - cargo install --locked --bin jj jj-cli
           - mkdir -p /out/ && mv $CARGO_HOME/bin/jj /out/jj
           - /out/jj util completion fish > /out/jj.fish
@@ -37,7 +37,7 @@ modules:
     files:
       - source: system
         destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
-  
+
   - type: copy
     from: docker.io/creativeprojects/resticprofile:latest
     src: /usr/bin/resticprofile
@@ -93,6 +93,7 @@ modules:
         - chezmoi
         - p7zip
         - fzf
+        - bat
     remove:
       packages:
         - firefox
