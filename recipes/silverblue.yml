@@ -16,7 +16,7 @@ stages:
       - type: script
         snippets:
           - apt-get update
-          - cargo install --locked --bin --root /out jj jj-cli jiq
+          - cargo install --locked --bin --root /out jj-cli jiq
           - /out/bin/jj util completion fish > /out/jj.fish
 
 # module configuration, executed in order
