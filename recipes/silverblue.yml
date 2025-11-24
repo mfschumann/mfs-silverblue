@@ -10,26 +10,30 @@ base-image: ghcr.io/ublue-os/silverblue-main
 image-version: 43 # latest is also supported if you want new updates ASAP
 
 stages:
-  - name: jj
+  - name: rust_tools
     from: docker.io/library/rust
     modules:
       - type: script
         snippets:
           - apt-get update
-          - cargo install --locked --bin jj jj-cli
-          - mkdir -p /out/ && mv $CARGO_HOME/bin/jj /out/jj
-          - /out/jj util completion fish > /out/jj.fish
+          - cargo install --locked --bin --root /out jj jj-cli jiq
+          - /out/bin/jj util completion fish > /out/jj.fish
 
 # module configuration, executed in order
 # you can include multiple instances of the same module
 modules:
   - type: copy
-    from: jj
-    src: /out/jj
+    from: rust_tools
+    src: /out/bin/jj
+    dest: /usr/bin/
+    
+  - type: copy
+    from: rust_tools
+    src: /out/bin/jiq
     dest: /usr/bin/
 
   - type: copy
-    from: jj
+    from: rust_tools
     src: /out/jj.fish
     dest: /usr/share/fish/completions/
 
