@@ -39,3 +39,5 @@ jobs:
           registry_token: ${{ github.token }}
           pr_event_number: ${{ github.event.number }}
           build_chunked_oci: true
+          # enabled by default, disabled to allow running without root privileges
+          maximize_build_space: false
