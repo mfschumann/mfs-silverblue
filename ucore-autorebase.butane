@@ -1,0 +1,49 @@
+variant: fcos
+version: 1.4.0
+passwd:
+  users:
+    - name: core
+      ssh_authorized_keys:
+        - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC5FZBBHBxnnKbPDwxusEx7JdajK7HP+z84V6PHjzAAal+vxrzO76AandeSQGl7d+f2qZ8tDYgsHqgMwJOTquZGHOhQSfQ9i4ab8QeiVpbXlhhuWHPb6XmT/SkQGkw4YiDnGTubVD7T2iwCHHGWKMX0ajlkfEeK4Ayh3QOpKAYMI/engZJJXga47UR0DiAgs2mO2Kbz0swRYwstJ0S2fWjrY4wMfQ7VsDhLZ9IV/EfOg6OlvsNq+mGvbNMhW8Pe9cwAUN/Ccz+zb5IGyQpAJT/b79zAl0K81JQ7oSIvy8cZUs6zeyg4H5xKUvznn/n/A6oSD1uSlTMp80j0Zh1VVh8P martin@mfs
+storage:
+  directories:
+    - path: /etc/ucore-autorebase
+      mode: 0754
+systemd:
+  units:
+    - name: ucore-unsigned-autorebase.service
+      enabled: true
+      contents: |
+        [Unit]
+        Description=uCore autorebase to unsigned OCI and reboot
+        ConditionPathExists=!/etc/ucore-autorebase/unverified
+        ConditionPathExists=!/etc/ucore-autorebase/signed
+        After=network-online.target
+        Wants=network-online.target
+        [Service]
+        Type=oneshot
+        StandardOutput=journal+console
+        ExecStart=/usr/bin/rpm-ostree rebase --bypass-driver ostree-unverified-registry:ghcr.io/ublue-os/ucore:stable
+        ExecStart=/usr/bin/touch /etc/ucore-autorebase/unverified
+        ExecStart=/usr/bin/systemctl disable ucore-unsigned-autorebase.service
+        ExecStart=/usr/bin/systemctl reboot
+        [Install]
+        WantedBy=multi-user.target
+    - name: ucore-signed-autorebase.service
+      enabled: true
+      contents: |
+        [Unit]
+        Description=uCore autorebase to signed OCI and reboot
+        ConditionPathExists=/etc/ucore-autorebase/unverified
+        ConditionPathExists=!/etc/ucore-autorebase/signed
+        After=network-online.target
+        Wants=network-online.target
+        [Service]
+        Type=oneshot
+        StandardOutput=journal+console
+        ExecStart=/usr/bin/rpm-ostree rebase --bypass-driver ostree-image-signed:docker://ghcr.io/mfschumann/mfs-ucore:latest
+        ExecStart=/usr/bin/touch /etc/ucore-autorebase/signed
+        ExecStart=/usr/bin/systemctl disable ucore-signed-autorebase.service
+        ExecStart=/usr/bin/systemctl reboot
+        [Install]
+        WantedBy=multi-user.target
