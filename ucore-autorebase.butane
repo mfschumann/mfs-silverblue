@@ -9,6 +9,8 @@ storage:
   directories:
     - path: /etc/ucore-autorebase
       mode: 0754
+    - path: /etc/secrets
+      mode: 0700
 systemd:
   units:
     - name: ucore-unsigned-autorebase.service
