@@ -1,0 +1,20 @@
+[Unit]
+Description=Telegraf
+Documentation=https://github.com/influxdata/telegraf
+After=network-online.target podman.socket
+Requires=podman.socket
+Wants=network-online.target
+
+[Service]
+Type=notify
+Environment="HOSTNAME=%H"
+EnvironmentFile=/etc/secrets/systemd/telegraf-influx-token
+User=telegraf
+ExecStart=/usr/bin/telegraf --config /etc/telegraf/telegraf.conf
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=on-failure
+RestartForceExitStatus=SIGPIPE
+KillMode=control-group
+
+[Install]
+WantedBy=multi-user.target

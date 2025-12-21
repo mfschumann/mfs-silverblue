@@ -1,0 +1,21 @@
+[Unit]
+Description=Podman container-alloy.service
+
+[Service]
+Restart=on-failure
+
+[Container]
+ContainerName=alloy
+Image=docker.io/grafana/alloy
+Exec=run \
+  --storage.path=/var/lib/alloy/data \
+  /etc/alloy/config.alloy
+Volume=/etc/container-alloy:/etc/alloy:z
+Volume=alloy-data:/var/lib/alloy/data
+Volume=/var/log:/var/log:ro
+Label=io.containers.autoupdate=registry
+SecurityLabelDisable=true
+
+[Install]
+WantedBy=default.target
+
