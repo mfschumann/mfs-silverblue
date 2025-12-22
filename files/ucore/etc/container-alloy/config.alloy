@@ -21,7 +21,7 @@ discovery.relabel "journal" {
 	}
 
 	rule {
-		source_labels = ["__journal_priority_keyword"]
+		source_labels = ["__journal__priority_keyword"]
 		target_label  = "level"
 	}
 }
@@ -32,7 +32,7 @@ loki.source.journal "journal" {
 	relabel_rules = discovery.relabel.journal.rules
 	forward_to    = [loki.write.default.receiver]
 	labels        = {
-		instance = string.trim_suffix(contants.hostname,".mfs.name"),
+		instance = string.trim_suffix(constants.hostname,".mfs.name"),
 		job      = "systemd-journal",
 	}
 }
