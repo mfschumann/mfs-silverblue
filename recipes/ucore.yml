@@ -14,7 +14,11 @@ image-version: stable # latest is also supported if you want new updates ASAP
 modules:
   - type: files
     files:
-      - source: ucore
+      - source: system/common
+        destination: / # copies files/common/* (* means everything inside it) into your image's root folder /
+  - type: files
+    files:
+      - source: system/ucore
         destination: / # copies files/ucore/* (* means everything inside it) into your image's root folder /
 
   - type: dnf
