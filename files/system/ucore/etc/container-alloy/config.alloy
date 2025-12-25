@@ -1,0 +1,70 @@
+logging {
+  level  = "info"
+  format = "logfmt"
+}
+
+livedebugging {
+  enabled = true
+}
+
+discovery.relabel "journal" {
+  targets = []
+
+  rule {
+    source_labels = ["__journal__systemd_unit"]
+    target_label  = "unit"
+  }
+
+  rule {
+    source_labels = ["__journal__boot_id"]
+    target_label  = "boot_id"
+  }
+  
+  rule {
+    source_labels = ["__journal_priority_keyword"]
+    target_label  = "journal_priority"
+  }
+}
+
+loki.process "journal" {
+  forward_to = [loki.write.default.receiver]
+
+  // Parse logfmt level 
+  stage.regex {
+      expression = "(?s)^.*level=(?P<logfmt_level>\\w+)\\s+.*$"
+  }
+
+  // Override level label: use logfmt 'level' if exists, else journald priority_keyword
+  stage.template {
+    source      = "level"
+    template    = `{{ if .logfmt_level }}{{ .logfmt_level }}{{ else }}{{ .journal_priority }}{{ end }}`
+  }
+
+  stage.label_drop {
+    values = ["journal_priority"]
+  }
+
+  stage.labels {
+    values = {
+      level = "",
+    }
+  }
+}
+
+loki.source.journal "journal" {
+  max_age = "12h"
+  path = "/var/log/journal"
+  relabel_rules = discovery.relabel.journal.rules
+  forward_to = [loki.process.journal.receiver]
+  labels = {
+    instance = string.trim_suffix(constants.hostname,".mfs.name"),
+  }
+}
+
+loki.write "default" {
+  endpoint {
+    url = "http://loki.mfs.name:3100/loki/api/v1/push"
+  }
+  external_labels = {}
+}
+

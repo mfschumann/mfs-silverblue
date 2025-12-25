@@ -15,6 +15,7 @@ Volume=alloy-data:/var/lib/alloy/data
 Volume=/var/log:/var/log:ro
 Label=io.containers.autoupdate=registry
 SecurityLabelDisable=true
+HostName=%H
 
 [Install]
 WantedBy=default.target

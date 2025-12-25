@@ -39,8 +39,13 @@ modules:
 
   - type: files
     files:
-      - source: system
-        destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
+      - source: system/common
+        destination: / # copies files/system/common/* (* means everything inside it) into your image's root folder /
+
+  - type: files
+    files:
+      - source: system/silverblue
+        destination: / # copies files/system/silverblue/* (* means everything inside it) into your image's root folder /
 
   - type: copy
     from: docker.io/creativeprojects/resticprofile:latest
