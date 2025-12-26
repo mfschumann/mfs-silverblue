@@ -16,7 +16,7 @@ stages:
       - type: script
         snippets:
           - apt-get update
-          - cargo install --locked --bin --root /out jj-cli jiq
+          - cargo install --locked --bin --root /out jj-cli jiq fresh-editor
           - /out/bin/jj util completion fish > /out/jj.fish
 
 # module configuration, executed in order
@@ -30,6 +30,11 @@ modules:
   - type: copy
     from: rust_tools
     src: /out/bin/jiq
+    dest: /usr/bin/
+
+  - type: copy
+    from: rust_tools
+    src: /out/bin/fresh
     dest: /usr/bin/
 
   - type: copy
