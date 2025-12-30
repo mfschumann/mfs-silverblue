@@ -5,6 +5,8 @@ passwd:
     - name: core
       ssh_authorized_keys:
         - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC5FZBBHBxnnKbPDwxusEx7JdajK7HP+z84V6PHjzAAal+vxrzO76AandeSQGl7d+f2qZ8tDYgsHqgMwJOTquZGHOhQSfQ9i4ab8QeiVpbXlhhuWHPb6XmT/SkQGkw4YiDnGTubVD7T2iwCHHGWKMX0ajlkfEeK4Ayh3QOpKAYMI/engZJJXga47UR0DiAgs2mO2Kbz0swRYwstJ0S2fWjrY4wMfQ7VsDhLZ9IV/EfOg6OlvsNq+mGvbNMhW8Pe9cwAUN/Ccz+zb5IGyQpAJT/b79zAl0K81JQ7oSIvy8cZUs6zeyg4H5xKUvznn/n/A6oSD1uSlTMp80j0Zh1VVh8P martin@mfs
+        - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICNFRC3lHf2hEcn9f3W5nChqz/DQ2x636qih4hHaL1xP JuiceSSH 
+    - name: telegraf
 storage:
   directories:
     - path: /etc/ucore-autorebase
