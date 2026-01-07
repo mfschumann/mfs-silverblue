@@ -48,7 +48,6 @@ modules:
         - tuned
         - unzip
         - telegraf
-        - fresh-editor.rpm
     remove:
       packages:
         - toolbox
