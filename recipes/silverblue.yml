@@ -16,7 +16,7 @@ stages:
       - type: script
         snippets:
           - apt-get update
-          - cargo install --locked --bin --root /out jj-cli jiq fresh-editor
+          - cargo install --locked --bin --root /out jj-cli jiq
           - /out/bin/jj util completion fish > /out/jj.fish
 
 # module configuration, executed in order
@@ -30,11 +30,6 @@ modules:
   - type: copy
     from: rust_tools
     src: /out/bin/jiq
-    dest: /usr/bin/
-
-  - type: copy
-    from: rust_tools
-    src: /out/bin/fresh
     dest: /usr/bin/
 
   - type: copy
@@ -113,6 +108,11 @@ modules:
         - firefox
         - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
         - toolbox
+
+  - type: script
+    scripts:
+      - install-fresh.sh
+      - install-gitbutler.sh
 
   - type: default-flatpaks
     configurations:
