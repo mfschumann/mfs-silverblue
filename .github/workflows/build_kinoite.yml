@@ -1,12 +1,12 @@
-name: bluebuild
+name: Build Kinoite
 on:
-  schedule:
-    - cron:
-        "00 06 * * TUE,FRI" # build at 06:00 UTC 2x per week
-        # (20 minutes after last ublue images start building)
+#  schedule:
+#    - cron:
+#        "00 06 * * TUE,FRI" # build at 06:00 UTC 2x per week
+#        # (20 minutes after last ublue images start building)
   push:
-    paths-ignore: # don't rebuild if only documentation has changed
-      - "**.md"
+    paths:
+      - "recipes/kinoite.yml"
 
   pull_request:
   workflow_dispatch: # allow manually triggering builds
@@ -26,9 +26,7 @@ jobs:
       fail-fast: false # stop GH from cancelling all matrix builds if one fails
       matrix:
         recipe:
-          - silverblue.yml
-          #- kinoite.yml
-          - ucore.yml
+          - kinoite.yml
     steps:
       # the build is fully handled by the reusable github action
       - name: Build Custom Image
