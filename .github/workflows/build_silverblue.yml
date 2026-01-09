@@ -1,4 +1,4 @@
-name: Silverblue
+name: Build Silverblue
 on:
   schedule:
     - cron:

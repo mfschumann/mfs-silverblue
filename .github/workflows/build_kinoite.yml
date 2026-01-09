@@ -1,4 +1,4 @@
-name: Kinoite
+name: Build Kinoite
 on:
 #  schedule:
 #    - cron:
