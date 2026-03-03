@@ -103,6 +103,7 @@ modules:
         - p7zip
         - fzf
         - bat
+        - httpie
     remove:
       packages:
         - firefox
