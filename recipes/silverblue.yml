@@ -104,6 +104,7 @@ modules:
         - fzf
         - bat
         - httpie
+        - fuse-sshfs
     remove:
       packages:
         - firefox
