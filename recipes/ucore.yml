@@ -49,6 +49,7 @@ modules:
         - unzip
         - telegraf
         - podlet
+        - nfs-utils
     remove:
       packages:
         - toolbox
