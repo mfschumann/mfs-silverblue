@@ -69,7 +69,6 @@ modules:
         - https://packages.microsoft.com/yumrepos/vscode/config.repo
     install:
       packages:
-        - micro
         - starship
         - gnome-shell-extension-gsconnect
         - gnome-tweaks
@@ -106,6 +105,8 @@ modules:
         - httpie
         - fuse-sshfs
         - uv
+        - conda
+        - ruff
     remove:
       packages:
         - firefox
@@ -115,8 +116,7 @@ modules:
   - type: script
     scripts:
       - install-fresh.sh
-      - install-gitbutler.sh
-
+      
   - type: default-flatpaks
     configurations:
       - scope: system
@@ -131,7 +131,7 @@ modules:
           - org.inkscape.Inkscape
           - org.gnome.TextEditor
           - org.gnome.Calculator
-          - org.gnome.Evince
+          - org.gnome.Papers
           - com.mattjakeman.ExtensionManager
           - io.github.flattool.Warehouse
           - org.gnome.Boxes
