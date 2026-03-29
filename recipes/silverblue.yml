@@ -16,26 +16,15 @@ stages:
       - type: script
         snippets:
           - apt-get update
-          - cargo install --locked --bin --root /out jj-cli jiq
-          - /out/bin/jj util completion fish > /out/jj.fish
+          - cargo install --locked --bin --root /out jiq
 
 # module configuration, executed in order
 # you can include multiple instances of the same module
-modules:
-  - type: copy
-    from: rust_tools
-    src: /out/bin/jj
-    dest: /usr/bin/
-    
+modules:    
   - type: copy
     from: rust_tools
     src: /out/bin/jiq
     dest: /usr/bin/
-
-  - type: copy
-    from: rust_tools
-    src: /out/jj.fish
-    dest: /usr/share/fish/completions/
 
   - type: files
     files:
