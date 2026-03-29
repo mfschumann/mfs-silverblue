@@ -96,6 +96,8 @@ modules:
         - uv
         - conda
         - ruff
+        - mamba
+        - nodejs
     remove:
       packages:
         - firefox
