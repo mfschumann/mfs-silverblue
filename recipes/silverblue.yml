@@ -94,10 +94,6 @@ modules:
         - httpie
         - fuse-sshfs
         - uv
-        - conda
-        - ruff
-        - mamba
-        - nodejs
     remove:
       packages:
         - firefox
@@ -107,6 +103,7 @@ modules:
   - type: script
     scripts:
       - install-fresh.sh
+      - install-pixi.sh
       
   - type: default-flatpaks
     configurations:
@@ -153,9 +150,6 @@ modules:
       - Dash to Panel
       - Just Perfection
       - Night Theme Switcher
-
-  - type: soar
-    additional-repos: true
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
 
