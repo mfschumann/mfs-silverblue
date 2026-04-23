@@ -1,0 +1,6 @@
+[Unit]
+Description=Update pixi global packages
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/pixi global update
