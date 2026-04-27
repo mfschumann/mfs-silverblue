@@ -9,23 +9,9 @@ description: This is my personal OS image.
 base-image: ghcr.io/ublue-os/silverblue-main
 image-version: 43 # latest is also supported if you want new updates ASAP
 
-stages:
-  - name: rust_tools
-    from: docker.io/library/rust
-    modules:
-      - type: script
-        snippets:
-          - apt-get update
-          - cargo install --locked --bin --root /out jiq
-
 # module configuration, executed in order
 # you can include multiple instances of the same module
 modules:    
-  - type: copy
-    from: rust_tools
-    src: /out/bin/jiq
-    dest: /usr/bin/
-
   - type: files
     files:
       - source: system/common
@@ -39,11 +25,6 @@ modules:
   - type: copy
     from: docker.io/creativeprojects/resticprofile:latest
     src: /usr/bin/resticprofile
-    dest: /usr/bin/
-
-  - type: copy
-    from: ghcr.io/rustic-rs/rustic:latest
-    src: /rustic
     dest: /usr/bin/
 
   - type: bling
@@ -85,15 +66,11 @@ modules:
         - tealdeer
         - virt-viewer
         - hcloud
-        - gitui
-        - gh
         - chezmoi
         - p7zip
         - fzf
         - bat
-        - httpie
         - fuse-sshfs
-        - uv
     remove:
       packages:
         - firefox
