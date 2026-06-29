@@ -71,6 +71,7 @@ modules:
         - fzf
         - bat
         - fuse-sshfs
+        - fuse-libs
     remove:
       packages:
         - firefox
