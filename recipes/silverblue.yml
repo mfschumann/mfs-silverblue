@@ -37,10 +37,14 @@ modules:
         - atim/starship
       files:
         - https://packages.microsoft.com/yumrepos/vscode/config.repo
+        - https://packages.gundulabs.com/rpm/fedora/gundulabs.repo
     install:
       packages:
         - starship
         - gnome-shell-extension-gsconnect
+        - gaze
+        - gaze-gui
+        - gaze-gnome-extension
         - gnome-tweaks
         - baobab
         - fish
