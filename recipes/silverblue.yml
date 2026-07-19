@@ -11,7 +11,7 @@ image-version: 44 # latest is also supported if you want new updates ASAP
 
 # module configuration, executed in order
 # you can include multiple instances of the same module
-modules:    
+modules:
   - type: files
     files:
       - source: system/common
@@ -37,7 +37,7 @@ modules:
         - atim/starship
       files:
         - https://packages.microsoft.com/yumrepos/vscode/config.repo
-        - https://packages.gundulabs.com/rpm/fedora/gundulabs.repo
+        - gundulabs.repo
     install:
       packages:
         - starship
@@ -86,7 +86,7 @@ modules:
     scripts:
       - install-fresh.sh
       - install-pixi.sh
-      
+
   - type: default-flatpaks
     configurations:
       - scope: system
@@ -123,7 +123,7 @@ modules:
 
   - type: justfiles
     validate: true
-    
+
   - type: gnome-extensions
     install:
       - AppIndicator and KStatusNotifierItem Support
@@ -134,4 +134,3 @@ modules:
       - Night Theme Switcher
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
-
