@@ -37,7 +37,6 @@ modules:
         - atim/starship
       files:
         - https://packages.microsoft.com/yumrepos/vscode/config.repo
-        - gundulabs.repo
     install:
       packages:
         - starship
