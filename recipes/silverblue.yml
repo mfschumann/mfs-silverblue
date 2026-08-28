@@ -42,9 +42,6 @@ modules:
       packages:
         - starship
         - gnome-shell-extension-gsconnect
-        - gaze
-        - gaze-gui
-        - gaze-gnome-extension
         - gnome-tweaks
         - baobab
         - fish
