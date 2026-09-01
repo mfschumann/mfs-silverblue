@@ -72,6 +72,7 @@ modules:
         - bat
         - fuse-sshfs
         - fuse-libs
+        - tailscale
     remove:
       packages:
         - firefox
