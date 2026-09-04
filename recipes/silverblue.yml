@@ -83,6 +83,7 @@ modules:
     scripts:
       - install-fresh.sh
       - install-pixi.sh
+      - install-talanoa.sh
 
   - type: default-flatpaks
     configurations:
