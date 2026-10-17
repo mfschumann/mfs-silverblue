@@ -76,9 +76,7 @@ modules:
         - fuse-sshfs
         - fuse-libs
         - tailscale
-        - repo: nextcloud-office
-          packages:
-            - nextcloud-office-nextcloudoffice
+        - nextcloud-office-nextcloudoffice
     remove:
       packages:
         - firefox
