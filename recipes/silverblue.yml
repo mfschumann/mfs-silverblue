@@ -37,6 +37,9 @@ modules:
         - atim/starship
       files:
         - https://packages.microsoft.com/yumrepos/vscode/config.repo
+        - nextcloud-office.repo
+      keys:
+        - https://download.nextcloud.com/office/repo/nextcloud-office.asc
     install:
       packages:
         - starship
@@ -73,6 +76,9 @@ modules:
         - fuse-sshfs
         - fuse-libs
         - tailscale
+        - repo: nextcloud-office
+          packages:
+            - nextcloud-office-nextcloudoffice
     remove:
       packages:
         - firefox

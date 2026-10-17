@@ -1,0 +1,7 @@
+[nextcloud-office]
+name=Nextcloud Office
+baseurl=https://download.nextcloud.com/office/repo/rpm/stable/$basearch
+enabled=1
+gpgcheck=1
+repo_gpgcheck=1
+gpgkey=https://download.nextcloud.com/office/repo/nextcloud-office.asc
