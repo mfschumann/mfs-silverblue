@@ -50,6 +50,7 @@ modules:
         - telegraf
         - podlet
         - nfs-utils
+        - ripgrep
     remove:
       packages:
         - toolbox
